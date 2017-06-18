@@ -3,8 +3,14 @@ package br.com.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Reserva {
+	@Id
+	@GeneratedValue
 	private long id;
 	private BigDecimal valorBase;
 	private LocalDate dataInicial;

@@ -4,7 +4,15 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Quarto {
+	@Id
+	@GeneratedValue
 	private long id;
 	private boolean solteiro;
 	private int qtdCamas;

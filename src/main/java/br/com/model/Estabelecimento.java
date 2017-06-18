@@ -3,10 +3,26 @@ package br.com.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+@Embeddable
 public class Estabelecimento {
+	@Id
+	@GeneratedValue
 	private long id;
+	
+	@Enumerated(EnumType.STRING)
 	private TipoEstabelecimento tipo;
 	private String cnpj;
+	
+	@Embedded
 	private Localizacao localizacao;
 	private String telefone;
 	private int qtdQuartos;
@@ -14,6 +30,8 @@ public class Estabelecimento {
 	private List<Quarto> quartosDisponiveis;
 	private List<Quarto> quartosOcupados;
 	private List<ComodidadeEstab> comodidades;
+	
+	@Enumerated(EnumType.STRING)
 	private Avaliacao avaliacao;
 
 	public Estabelecimento() {

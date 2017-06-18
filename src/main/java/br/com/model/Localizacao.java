@@ -1,5 +1,8 @@
 package br.com.model;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Localizacao {
 	private String logradouro;
 	private String cep;
