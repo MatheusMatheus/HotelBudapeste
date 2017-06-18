@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cidade {
@@ -14,6 +15,8 @@ public class Cidade {
 	private String nome;
 	private String latitude;
 	private String longitude;
+	
+	@OneToMany
 	private List<Estabelecimento> estabelecimentos;
 
 	public long getId() {

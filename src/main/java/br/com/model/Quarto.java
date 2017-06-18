@@ -4,22 +4,38 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Embeddable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Quarto {
+
 	@Id
 	@GeneratedValue
 	private long id;
 	private boolean solteiro;
 	private int qtdCamas;
 	private boolean ocupado;
+	
+	@OneToMany
 	private List<Hospede> hospedes;
 	private BigDecimal valorDiaria;
+	
+	@ElementCollection
 	private List<ComodidadeQuarto> comodidades;
+	
+	@Lob
+	private byte[][] fotos;
+//	File file = new File("img/JBDFav300.png");
+//	byte[] picInBytes = new byte[(int) file.length()];
+//	FileInputStream fileInputStream = new FileInputStream(file);
+//	fileInputStream.read(picInBytes);
+//	fileInputStream.close();
+//	user.setProfilePic(picInBytes);
 
 	public Quarto() {
 		setHospedes(new ArrayList<Hospede>());
@@ -81,5 +97,19 @@ public class Quarto {
 	public void setQtdCamas(int qtdCamas) {
 		this.qtdCamas = qtdCamas;
 	}
+
+	public byte[][] getFotos() {
+		return fotos;
+	}
+
+	public void setFotos(byte[][] fotos) {
+		this.fotos = fotos;
+	}
+
+	public void setComodidades(List<ComodidadeQuarto> comodidades) {
+		this.comodidades = comodidades;
+	}
+	
+	
 
 }

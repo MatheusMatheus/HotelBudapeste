@@ -3,6 +3,7 @@ package br.com.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 @Embeddable
@@ -26,9 +28,15 @@ public class Estabelecimento {
 	private Localizacao localizacao;
 	private String telefone;
 	private int qtdQuartos;
+	
+	@OneToMany
 	private List<Quarto> quartos;
+	@OneToMany
 	private List<Quarto> quartosDisponiveis;
+	@OneToMany
 	private List<Quarto> quartosOcupados;
+	
+	@ElementCollection
 	private List<ComodidadeEstab> comodidades;
 	
 	@Enumerated(EnumType.STRING)

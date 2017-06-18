@@ -1,9 +1,9 @@
 package br.com.model;
 
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Administrador {
@@ -13,7 +13,7 @@ public class Administrador {
 	private String nome;
 	private String matricula;
 	
-	@Embedded
+	@OneToOne
 	private Login login;
 	private String email;
 

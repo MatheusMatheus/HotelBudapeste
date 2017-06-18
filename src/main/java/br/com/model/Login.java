@@ -1,11 +1,24 @@
 package br.com.model;
 
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Embeddable
+@Entity
 public class Login {
+	@Id
+	@GeneratedValue
+	private long id;
 	private String usuario;
 	private String senha;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getUsuario() {
 		return usuario;

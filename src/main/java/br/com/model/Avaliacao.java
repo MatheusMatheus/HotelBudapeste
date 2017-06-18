@@ -1,6 +1,8 @@
 package br.com.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -9,6 +11,7 @@ public class Avaliacao {
 	@Id
 	@GeneratedValue
 	private long id;
+	@Enumerated(EnumType.STRING)
 	private Critica critica;
 	private int nota;
 	private String avaliacao;

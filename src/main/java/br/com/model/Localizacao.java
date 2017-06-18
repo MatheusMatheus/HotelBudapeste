@@ -1,5 +1,4 @@
 package br.com.model;
-
 import javax.persistence.Embeddable;
 
 @Embeddable

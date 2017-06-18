@@ -2,13 +2,17 @@ package br.com.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Comprador extends Hospede {
 	private String email;
 	private LocalDate dataNascimento;
+	@Embedded
 	private Localizacao localizacao;
+	@OneToOne
 	private Login login;
 
 	public String getEmail() {

@@ -12,6 +12,9 @@ public class ProcuraHotel implements Logica{
 
 	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String cidade = request.getParameter("cidade");
+		String dataInicial = request.getParameter("dataInicial");
+		String dataFinal = request.getParameter("dataFinal");
 		List<Estabelecimento> estabelecimentos = new EstabelecimentoDAO().getList();
 		return null;
 	}

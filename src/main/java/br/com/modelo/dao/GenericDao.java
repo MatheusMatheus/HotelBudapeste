@@ -60,4 +60,8 @@ public class GenericDao<T, I extends Serializable> {
 	public T encontrar(I id) {
 		return entityManager.find(persistedClass, id);
 	}
+	
+	public T econtrarPorString(String str) {
+		return entityManager.find(persistedClass, str);
+	}
 }
