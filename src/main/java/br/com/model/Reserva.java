@@ -21,10 +21,9 @@ public class Reserva {
 	@Temporal(TemporalType.DATE)
 	private LocalDate dataFinal;
 
-	@OneToMany
+
 	private Quarto quarto;
-	
-	@OneToMany
+
 	private Hospede hospede;
 
 	public BigDecimal getValorReserva() {

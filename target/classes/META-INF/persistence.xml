@@ -12,6 +12,8 @@
 		<class>br.com.model.Login</class>
 		<class>br.com.model.Quarto</class>
 		<class>br.com.model.Reserva</class>
+
+
 		
 		<properties>
 			<property
