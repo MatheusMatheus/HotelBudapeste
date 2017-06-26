@@ -6,9 +6,7 @@ import java.time.temporal.ChronoUnit;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Reserva {
@@ -16,15 +14,14 @@ public class Reserva {
 	@GeneratedValue
 	private long id;
 	private BigDecimal valorBase;
-	@Temporal(TemporalType.DATE)
 	private LocalDate dataInicial;
-	@Temporal(TemporalType.DATE)
 	private LocalDate dataFinal;
 
-
+	@ManyToOne
 	private Quarto quarto;
 
-	private Hospede hospede;
+	@ManyToOne
+	private Comprador comprador;
 
 	public BigDecimal getValorReserva() {
 		long dias = getQtdDias(dataInicial, dataFinal);
@@ -87,11 +84,12 @@ public class Reserva {
 		this.quarto = quarto;
 	}
 
-	public Hospede getHospede() {
-		return hospede;
+	public Comprador getComprador() {
+		return comprador;
 	}
 
-	public void setHospede(Hospede hospede) {
-		this.hospede = hospede;
+	public void setComprador(Comprador comprador) {
+		this.comprador = comprador;
 	}
+
 }

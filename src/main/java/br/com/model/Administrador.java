@@ -13,7 +13,7 @@ public class Administrador {
 	private String nome;
 	private String matricula;
 	
-	@OneToOne
+	@OneToOne(optional = false)
 	private Login login;
 	private String email;
 

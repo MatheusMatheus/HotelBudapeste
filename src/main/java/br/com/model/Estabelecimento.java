@@ -11,6 +11,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,33 +20,38 @@ public class Estabelecimento {
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	@Enumerated(EnumType.STRING)
 	private TipoEstabelecimento tipo;
 	private String cnpj;
-	
+
 	@Embedded
 	private Localizacao localizacao;
+	
 	private String telefone;
 	private int qtdQuartos;
-	
+
 	@OneToMany
 	private List<Quarto> quartos;
+	
 	@OneToMany
 	private List<Quarto> quartosDisponiveis;
+	
 	@OneToMany
 	private List<Quarto> quartosOcupados;
-	
+
 	@ElementCollection
 	private List<ComodidadeEstab> comodidades;
-	
-	@Enumerated(EnumType.STRING)
-	private Avaliacao avaliacao;
+
+	@OneToMany
+	private List<Avaliacao> avaliacoes;
+
 
 	public Estabelecimento() {
 		setQuartos(new ArrayList<Quarto>());
 		setQuartosDisponiveis(new ArrayList<Quarto>());
 		setQuartosOcupados(new ArrayList<Quarto>());
+		setAvaliacoes(new ArrayList<Avaliacao>());
 		this.comodidades = new ArrayList<ComodidadeEstab>();
 	}
 
@@ -74,12 +80,16 @@ public class Estabelecimento {
 		this.id = id;
 	}
 
-	public Avaliacao getAvaliacao() {
-		return avaliacao;
+	public List<Avaliacao> getAvaliacoes() {
+		return avaliacoes;
 	}
 
-	public void setAvaliacao(Avaliacao avaliacao) {
-		this.avaliacao = avaliacao;
+	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
+
+	public void setComodidades(List<ComodidadeEstab> comodidades) {
+		this.comodidades = comodidades;
 	}
 
 	public List<ComodidadeEstab> getComodidades() {
@@ -153,5 +163,4 @@ public class Estabelecimento {
 	public void setQuartosOcupados(List<Quarto> quartosOcupados) {
 		this.quartosOcupados = quartosOcupados;
 	}
-
 }

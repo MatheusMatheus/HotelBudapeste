@@ -1,19 +1,26 @@
 package br.com.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Comprador extends Hospede {
 	private String email;
 	private LocalDate dataNascimento;
+	
 	@Embedded
 	private Localizacao localizacao;
-	@OneToOne
+	
+	@OneToOne(optional = false)
 	private Login login;
+	
+	@OneToMany(mappedBy = "comprador")
+	private List<Reserva> reservas;
 
 	public String getEmail() {
 		return email;

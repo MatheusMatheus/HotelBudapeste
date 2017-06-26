@@ -2,6 +2,7 @@ package br.com.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -20,29 +21,29 @@ public class Quarto {
 	private boolean solteiro;
 	private int qtdCamas;
 	private boolean ocupado;
-	
-	@OneToMany
-	private List<Hospede> hospedes;
 	private BigDecimal valorDiaria;
-	
+
 	@ElementCollection
-	private List<ComodidadeQuarto> comodidades;
-	
+	private Collection<ComodidadeQuarto> comodidades;
+
+	@OneToMany(mappedBy = "quarto")
+	private List<Reserva> reservas;
+
 	@Lob
 	private byte[][] fotos;
-//	File file = new File("img/JBDFav300.png");
-//	byte[] picInBytes = new byte[(int) file.length()];
-//	FileInputStream fileInputStream = new FileInputStream(file);
-//	fileInputStream.read(picInBytes);
-//	fileInputStream.close();
-//	user.setProfilePic(picInBytes);
+	// File file = new File("img/JBDFav300.png");
+	// byte[] picInBytes = new byte[(int) file.length()];
+	// FileInputStream fileInputStream = new FileInputStream(file);
+	// fileInputStream.read(picInBytes);
+	// fileInputStream.close();
+	// user.setProfilePic(picInBytes);
 
 	public Quarto() {
-		setHospedes(new ArrayList<Hospede>());
+		setReservas(new ArrayList<Reserva>());
 		this.comodidades = new ArrayList<ComodidadeQuarto>();
 	}
-	
-	public List<ComodidadeQuarto> getComodidades() {
+
+	public Collection<ComodidadeQuarto> getComodidades() {
 		return comodidades;
 	}
 
@@ -56,14 +57,6 @@ public class Quarto {
 
 	public void setValorDiaria(BigDecimal valorDiaria) {
 		this.valorDiaria = valorDiaria;
-	}
-
-	public List<Hospede> getHospedes() {
-		return hospedes;
-	}
-
-	public void setHospedes(List<Hospede> hospedes) {
-		this.hospedes = hospedes;
 	}
 
 	public boolean isOcupado() {
@@ -109,7 +102,17 @@ public class Quarto {
 	public void setComodidades(List<ComodidadeQuarto> comodidades) {
 		this.comodidades = comodidades;
 	}
-	
-	
+
+	public void setComodidades(Collection<ComodidadeQuarto> comodidades) {
+		this.comodidades = comodidades;
+	}
+
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
 
 }
