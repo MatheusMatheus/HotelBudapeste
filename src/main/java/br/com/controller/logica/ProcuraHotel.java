@@ -16,7 +16,7 @@ public class ProcuraHotel implements Logica{
 		String dataInicial = request.getParameter("dataInicial");
 		String dataFinal = request.getParameter("dataFinal");
 		List<Estabelecimento> estabelecimentos = new EstabelecimentoDAO().getList();
-		return null;
+		return "lista-estabelecimentos.jsp";
 	}
 
 }

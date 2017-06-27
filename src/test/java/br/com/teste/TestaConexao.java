@@ -35,25 +35,5 @@ public class TestaConexao {
 //		manager.persist(estab);
 //		manager.getTransaction().commit();
 		
-/*
-
-	@Embedded
-	private Localizacao localizacao;
-
-	@OneToMany
-	private List<Quarto> quartos;
-	@OneToMany
-	private List<Quarto> quartosDisponiveis;
-	@OneToMany
-	private List<Quarto> quartosOcupados;
-
-	@ElementCollection
-	private List<ComodidadeEstab> comodidades;
-
-	@OneToMany
-	private List<Avaliacao> avaliacoes;
-
- * */
-
 	}
 }

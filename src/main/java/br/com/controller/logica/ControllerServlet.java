@@ -20,13 +20,13 @@ public class ControllerServlet extends HttpServlet{
 			Class<?> classe = Class.forName(nomeClasse);
 			Logica logica = (Logica) classe.newInstance();
 			
-			//Recebe a String apÃ³s a execuÃ§Ã£o da lÃ³gica
+			// Recebe o String após a execução da lógica
 			String pagina = logica.executa(request, response);
 			
-			// Faz o forward para a pÃ¡gina JSP
+			// Faz o forward para a página JSP
 			request.getRequestDispatcher(pagina).forward(request, response);
 		} catch (Exception e) {
-			throw new ServletException("A lÃ³gica de negÃ³cios causou uma exceÃ§Ã£o");
+			throw new ServletException("A lógica de negócios causou uma exceção");
 		}
 	}
 }

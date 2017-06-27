@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Reserva {
@@ -17,7 +19,7 @@ public class Reserva {
 	private LocalDate dataInicial;
 	private LocalDate dataFinal;
 
-	@ManyToOne
+	@OneToOne
 	private Quarto quarto;
 
 	@ManyToOne

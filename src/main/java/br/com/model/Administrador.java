@@ -1,5 +1,6 @@
 package br.com.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ public class Administrador {
 	private String nome;
 	private String matricula;
 	
-	@OneToOne(optional = false)
+	@OneToOne(optional = false, cascade=CascadeType.ALL, orphanRemoval = true)
 	private Login login;
 	private String email;
 

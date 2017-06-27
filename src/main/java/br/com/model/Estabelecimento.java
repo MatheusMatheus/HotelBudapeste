@@ -3,6 +3,7 @@ package br.com.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
@@ -11,11 +12,11 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-@Embeddable
 public class Estabelecimento {
 	@Id
 	@GeneratedValue
@@ -25,27 +26,28 @@ public class Estabelecimento {
 	private TipoEstabelecimento tipo;
 	private String cnpj;
 
+	@Lob
+	private byte[][] fotos;
+
 	@Embedded
 	private Localizacao localizacao;
-	
-	private String telefone;
-	private int qtdQuartos;
 
-	@OneToMany
+	private String telefone;
+
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Quarto> quartos;
-	
-	@OneToMany
+
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Quarto> quartosDisponiveis;
-	
-	@OneToMany
+
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Quarto> quartosOcupados;
 
 	@ElementCollection
 	private List<ComodidadeEstab> comodidades;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Avaliacao> avaliacoes;
-
 
 	public Estabelecimento() {
 		setQuartos(new ArrayList<Quarto>());
@@ -116,14 +118,6 @@ public class Estabelecimento {
 		this.telefone = telefone;
 	}
 
-	public int getQtdQuartos() {
-		return qtdQuartos;
-	}
-
-	public void setQtdQuartos(int qtdQuartos) {
-		this.qtdQuartos = qtdQuartos;
-	}
-
 	public String getCnpj() {
 		return cnpj;
 	}
@@ -163,4 +157,13 @@ public class Estabelecimento {
 	public void setQuartosOcupados(List<Quarto> quartosOcupados) {
 		this.quartosOcupados = quartosOcupados;
 	}
+
+	public byte[][] getFotos() {
+		return fotos;
+	}
+
+	public void setFotos(byte[][] fotos) {
+		this.fotos = fotos;
+	}
+
 }

@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
 public class GenericDao<T, I extends Serializable> {
-
-	protected EntityManager entityManager;
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory("HotelBudapeste");
+	protected EntityManager entityManager = factory.createEntityManager();;
 	private Class<T> persistedClass;
 
 	protected GenericDao() {

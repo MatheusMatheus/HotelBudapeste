@@ -38,8 +38,8 @@
 <!-- 				value="conf/db/create-schema.sql" /> -->
 
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.user" value="user101" />
-			<property name="javax.persistence.jdbc.password" value="password" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="root" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/HotelBudapeste" />
 		</properties>
 	</persistence-unit>

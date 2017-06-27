@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Quarto {
@@ -26,8 +28,8 @@ public class Quarto {
 	@ElementCollection
 	private Collection<ComodidadeQuarto> comodidades;
 
-	@OneToMany(mappedBy = "quarto")
-	private List<Reserva> reservas;
+	@OneToOne(mappedBy = "quarto", cascade = CascadeType.ALL)
+	private Reserva reserva;
 
 	@Lob
 	private byte[][] fotos;
@@ -39,8 +41,12 @@ public class Quarto {
 	// user.setProfilePic(picInBytes);
 
 	public Quarto() {
-		setReservas(new ArrayList<Reserva>());
 		this.comodidades = new ArrayList<ComodidadeQuarto>();
+	}
+
+	public void addReserva(Reserva reserva) {
+		this.reserva = reserva;
+		reserva.setQuarto(this);
 	}
 
 	public Collection<ComodidadeQuarto> getComodidades() {
@@ -107,12 +113,8 @@ public class Quarto {
 		this.comodidades = comodidades;
 	}
 
-	public List<Reserva> getReservas() {
-		return reservas;
-	}
-
-	public void setReservas(List<Reserva> reservas) {
-		this.reservas = reservas;
+	public Reserva getReserva() {
+		return reserva;
 	}
 
 }
