@@ -49,6 +49,9 @@ public class Estabelecimento {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Avaliacao> avaliacoes;
 
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Cidade cidade;
+
 	public Estabelecimento() {
 		setQuartos(new ArrayList<Quarto>());
 		setQuartosDisponiveis(new ArrayList<Quarto>());
@@ -164,6 +167,14 @@ public class Estabelecimento {
 
 	public void setFotos(byte[][] fotos) {
 		this.fotos = fotos;
+	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 
 }

@@ -3,6 +3,7 @@ package br.com.modelo.dao;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import br.com.model.Cidade;
@@ -20,7 +21,8 @@ public class EstabelecimentoDAO extends GenericDao<Estabelecimento, Long>{
 		return null;
 	}
 	
-	public List<Estabelecimento> buscaEstabelecimentos() {
-		return this.entityManager.createNamedQuery("Cidade.buscaEstabelecimentos", Estabelecimento.class).getResultList();
-	}
+//	public List<Estabelecimento> buscaEstabelecimentos() {
+//		Query query = entityManager.createQuery("SELECT DISTINCT e FROM Cidade c, IN(c.estabelecimentos) e");
+//		return query.getResultList();
+//	}
 }
