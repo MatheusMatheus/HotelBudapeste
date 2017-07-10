@@ -16,7 +16,9 @@ import br.com.model.TipoEstabelecimento;
 
 public class TestaConexao {
 	public static void main(String[] args) {
+		System.out.println("Criando o banco...");
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("HotelBudapeste");
+		System.out.println("Banco criado");
 
 	}
 }

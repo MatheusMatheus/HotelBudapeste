@@ -22,9 +22,11 @@ public class Estabelecimento {
 	@GeneratedValue
 	private long id;
 
+	@OneToMany
+	private List<Reserva> reservas;
+
 	@Enumerated(EnumType.STRING)
 	private TipoEstabelecimento tipo;
-	private String cnpj;
 
 	@Lob
 	private byte[][] fotos;
@@ -51,12 +53,15 @@ public class Estabelecimento {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Cidade cidade;
+	
+	private String cnpj;
 
 	public Estabelecimento() {
 		setQuartos(new ArrayList<Quarto>());
 		setQuartosDisponiveis(new ArrayList<Quarto>());
 		setQuartosOcupados(new ArrayList<Quarto>());
 		setAvaliacoes(new ArrayList<Avaliacao>());
+		setReservas(new ArrayList<Reserva>());
 		this.comodidades = new ArrayList<ComodidadeEstab>();
 	}
 
@@ -83,6 +88,14 @@ public class Estabelecimento {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
 	}
 
 	public List<Avaliacao> getAvaliacoes() {
