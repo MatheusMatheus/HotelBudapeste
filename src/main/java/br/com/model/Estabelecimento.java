@@ -22,6 +22,8 @@ public class Estabelecimento {
 	@GeneratedValue
 	private long id;
 
+	private String nome;
+
 	@OneToMany
 	private List<Reserva> reservas;
 
@@ -53,7 +55,7 @@ public class Estabelecimento {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Cidade cidade;
-	
+
 	private String cnpj;
 
 	public Estabelecimento() {
@@ -88,6 +90,14 @@ public class Estabelecimento {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public List<Reserva> getReservas() {

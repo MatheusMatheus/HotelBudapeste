@@ -14,11 +14,9 @@ public class EstabelecimentoDAO extends GenericDao<Estabelecimento, Long>{
 		super(Estabelecimento.class);
 	}
 	
-	public List<Estabelecimento> estabVagos(LocalDate dataInicial, LocalDate dataFinal) {
-		TypedQuery<Estabelecimento> estabelecimentos = entityManager.createQuery("SELECT e FROM Estabelecimento", Estabelecimento.class);
-		
-
-		return null;
+	public List<Estabelecimento> getEstabVagos(LocalDate dataInicial, LocalDate dataFinal) {
+		TypedQuery<Estabelecimento> query = entityManager.createQuery("SELECT e FROM Estabelecimento", Estabelecimento.class);
+		return query.getResultList();
 	}
 	
 //	public List<Estabelecimento> buscaEstabelecimentos() {
